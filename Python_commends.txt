@@ -1,0 +1,3 @@
+#python guide
+#aby dodac string do wartosci nalezy je rozdzielic , a nie jak to jest w JS +.
+print('Hello')

@@ -1,0 +1,93 @@
+
+//ADD record into table
+INSERT INTO table_name(column_name, column_name2)
+VALUES (1, 'value'); / stworzenie nowego rekordu w tabeli
+
+//UPDATE record in table
+
+UPDATE table_name
+SET column = 'value', column_2 = 40
+WHERE id = 3 OR id =5
+
+//REMOVE values in table
+
+DELETE FROM table_name
+WHERE column = 'value';
+
+// Create database
+
+CREATE DATABASE  database_name
+
+//Remove database
+DROP DATABASE database_name
+
+//Create table
+CREATE TABLE table_name
+(
+  column_name1 datatype NOT NULL,  // wartosc nie moze byc NULLem
+  column_name2 datatype UNIQUE,  // wartos nie moze byc duplikatem
+  CONSTRAINT nazwa_komunikatu_jaki_wyskoczy UNIQUE (column_1),
+  id datatype PRIMARY KEY // klucz glowny
+)
+
+PRIMARY KEY  vs NOT NULL + UNIQUE // Primary key moze byc tylko jeden
+
+//Remove table
+DROP TABLE table_name
+
+// add/change/drop column in existing table
+
+ALTER TABLE _______
+ADD COLUMN _______ _______ ; /column name, data type
+
+ALTER TABLE  _______
+DROP COLUMN ________; / column name
+
+SELECT COUNT(*)
+FROM _____; // liczy ilość
+
+sum() - sumuje
+avg() - zwraca wartosc srednia
+max() - zwraca wartosc maksymalna
+min() - zwraca wartosc minimalna
+
+SELECT max(column_name) , min(column_name)
+FROM ____;
+
+SELECT column_name, aggregate_function(column_name)
+FROM table_name
+GROUP BY column_name
+HAVING aggregate_function(column_name) operator value;  / ograniczenie do jakiego zawezamy pytanie
+
+example:
+SELECT genre, sum(cost)
+FROM Movies
+GROUP BY genre ;      / wyswietla koszt filmow z tabeli movies pogrupowane po typie (genre)
+
+Foreign key should be created like this: table_name_id and it refers to the primary key in the table
+Foreign key constraint :
+Create Table table_name
+{
+id in PRIMARY KEY,
+table_id int REFERENCES table(id),   // can be use without columtn like REFERENCES table,
+name varchar(50)
+}
+
+or by adding table contraint
+FOREIGN KEY (table_id) REFERENCES table
+
+//VALUE CHECK VALIDATION
+
+CREATE TABLE movies
+{
+id int PRIMARY key,
+duration int CHECK (duration>0) // system will require values grater than zero
+}
+
+Normalization - process of reducing duplication in database tables
+join table name convention  = table1_table2
+
+
+WHERE id = 2 or id = 3
+it is the same as 
+WHERE id IN (2,3)
