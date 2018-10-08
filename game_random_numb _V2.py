@@ -2,40 +2,37 @@ import random
 
 print('''Hej!
 
-To jest gra, gdzie musisz odgadnąć wylosowaną liczbę.
-Początkowo musisz podać zakres liczb w jakim komputer będzie losował,
-a następnie odgadnąć wylosowaną wartość.
-
+Pick your number.
+You have to declare number range that random number will be picked then you have to say that number is that.
 ''')
 
-rangeFrom = int(input('Podaj wartość początkową: '))
-rangeTo = int(input('Podaj wartość końcową: '))
-proba_max = int(input('W ilu probach odgadniesz? '))
+rangeFrom = int(input('From range: '))
+rangeTo = int(input('To range: '))
+user_max_try = int(input('How many tries do you need? '))
 
 while rangeFrom >rangeTo:
-    print('Podałeś błędne zakresy: ')
-    rangeFrom = int(input('Podaj wartość początkową: '))
-    rangeTo = int(input('Podaj wartość końcową: '))
+    print('Incorrect range: ')
+    rangeFrom = int(input('From range: '))
+    rangeTo = int(input('To range: '))
 
 rand1 = int(random.randint( rangeFrom, rangeTo))
-print('Liczba została wylosowana.')
-hit = int(input('Podaj swoją liczbę: '))
+print('We know the number!')
+hit = int(input('Give a shot: '))
 
-proba = 1
+user_try = 1
 
-while rand1 != hit and proba < proba_max:
-    proba = proba + 1
+while rand1 != hit and user_try < user_max_try:
+    user_try = user_try + 1
     if rand1 < hit:
-        hit = int(input('Za duzo, podaj mniejsza liczbe: '))
+        hit = int(input('Too high, picker lower: '))
     elif rand1 > hit:
-        hit = int(input('Za malo, podaj wieksza liczbe: '))
+        hit = int(input('Too low, pick greater: '))
     else:
-        print('Zepsułeś/aś grę! :(')
+        print('You broke it! :(')
 
-if proba == proba_max:
-    print('Przegrales, skonczyla Ci sie liczba prob.')
+if user_try == user_max_try:
+    print('You lost, too many tries.')
 else:
-    print('Gratulacje, trafiles!')
+    print('Score, perfect! YOu won!')
 
-
-input('Do zakonczenia programu nacisnij przycisk.')
+input('Hit button to close the program.')
